@@ -1,0 +1,28 @@
+<div class="home-container">
+    <!-- Title -->
+    <div class="title">
+        <span>Welcome to</span>
+        <span class="brand">Unstop</span>
+    </div>
+
+    <!-- Card showing user info -->
+    <mat-card class="profile-card" *ngIf="userData">
+        <!-- Profile Image -->
+        <img class="profile-image" src="./../../assets/Frame 1116607307.svg" alt="Profile Picture" />
+
+        <!-- User Name -->
+        <h2 class="user-name">
+            {{ userData.firstName }} {{ userData.lastName }}
+        </h2>
+
+        <!-- Email -->
+        <p class="user-info">{{ userData.email }}</p>
+        <!-- Gender -->
+        <p class="user-info">{{ userData.gender }}</p>
+
+        <!-- Logout Button -->
+        <button mat-raised-button color="primary" class="logout-button" (click)="logout()">
+            Logout
+        </button>
+    </mat-card>
+</div>

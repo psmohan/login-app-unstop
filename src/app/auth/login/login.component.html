@@ -1,0 +1,88 @@
+<div class="login-wrapper">
+    <div>
+        <img src="./../../../assets/Illustration.svg">
+    </div>
+    <div>
+        <mat-card style="width:fit-content;">
+
+            <div class="login-page">
+                <div class="welcome">
+                    <div class="line-one">
+                        Welcome to
+                    </div>
+                    <div class="line-two">
+                        Unstop
+                    </div>
+                </div>
+                <div class="login-with">
+                    <img src="../../../assets/Frame 1116607310.svg" alt="" srcset=""> Login with Google
+                </div>
+                <div class="login-with">
+                    <img src="../../../assets/Frame 1116607311.svg" alt="" srcset=""> Login with Facebook
+                </div>
+
+                <div class="or-div">
+                    <div class="line"></div>
+                    <div>OR</div>
+                    <div class="line"></div>
+                </div>
+                <form [formGroup]="loginForm">
+                    <!-- Username Field -->
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Username</mat-label>
+                        <input matInput type="text" placeholder="Username" formControlName="username" required />
+                        <mat-error *ngIf="username?.hasError('required')">
+                            Username is required.
+                        </mat-error>
+                        <mat-error *ngIf="username?.hasError('pattern')">
+                            Username must be 'emilys'.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <!-- Email Field -->
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" placeholder="Email" formControlName="email" required />
+                        <mat-error *ngIf="email?.hasError('required')">
+                            Email is required.
+                        </mat-error>
+                        <mat-error *ngIf="email?.hasError('email')">
+                            Invalid email format.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <!-- Password Field -->
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" placeholder="Password" formControlName="password" required />
+                        <mat-error *ngIf="password?.hasError('required')">
+                            Password is required.
+                        </mat-error>
+                        <mat-error *ngIf="password?.hasError('minlength')">
+                            Password must be at least 8 characters.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <!-- Remember Me and Forgot Password -->
+                    <div class="form-options">
+                        <mat-checkbox formControlName="rememberMe">Remember Me</mat-checkbox>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button mat-raised-button color="primary" (click)="handleLogin()" class="submit">
+                        Login
+                    </button>
+                </form>
+
+                <!-- API Error -->
+                <p *ngIf="errors.api" class="error">{{ errors.api }}</p>
+
+                <!-- Register Link -->
+                <div class="gap-1">
+                    <span>Don’t have an account?</span> <a routerLink="/register" class="register-link">Register</a>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>
